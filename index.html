@@ -45,7 +45,8 @@
     const title = document.getElementById('title'); 
     const prev = document.getElementById('prev'); 
     const next = document.getElementById('next'); 
-
+    
+    let progress = document.getElementbyId("progress");                                                         
     const songs= [{
         name:"eti1",
         title:"TUM HI HO",
@@ -121,6 +122,16 @@
         playMusic();
 
     }
+    
+    music.addEventListener("timeupdate",(event) => {
+    const {currentTime, duration} = event.srcElement;
+    console.log(currentTime);
+    console.log(duration);
+    let progress_time = (cureentTime/ duration) * 100;
+    progress.style.width = `${progress_time}` ;                                   
+    
+   });
+                   
 
     
     next.addEventListener('click',nextSong);
